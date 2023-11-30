@@ -1,4 +1,4 @@
-import { Histogram, Loader } from '../../components/index';
+import { ColorPanel, Histogram, Loader } from '../../components/index';
 import { useGetChartDataQuery } from '../../api/ChartApi';
 
 export default function Chart(): React.JSX.Element {
@@ -14,7 +14,7 @@ export default function Chart(): React.JSX.Element {
 
 	return (
 		<section>
-			<h1>Chart List</h1>
+			<ColorPanel />
 			{isSuccess &&
 				data.map((item) => (
 					<Histogram key={item.label} label={item.label} values={item.values} />

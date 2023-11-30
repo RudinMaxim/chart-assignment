@@ -1,3 +1,4 @@
+import { Bar } from 'react-chartjs-2';
 import {
 	Chart as ChartJS,
 	CategoryScale,
@@ -7,7 +8,7 @@ import {
 	Tooltip,
 	Legend,
 } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+
 ChartJS.register(
 	CategoryScale,
 	LinearScale,
@@ -17,20 +18,7 @@ ChartJS.register(
 	Legend
 );
 
-export const options = {
-	responsive: true,
-	plugins: {
-		legend: {
-			position: 'top' as const,
-		},
-		title: {
-			display: true,
-			text: 'Chart.js Bar Chart',
-		},
-	},
-};
-
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+const labels = [1, 2, 3, 4, 5];
 
 interface IHistogram {
 	label: string;
@@ -50,7 +38,7 @@ export const Histogram = ({ label, values }: IHistogram) => {
 
 	return (
 		<div className='histogram'>
-			<Bar options={options} data={data} />;
+			<Bar data={data} />;
 		</div>
 	);
 };

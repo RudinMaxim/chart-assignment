@@ -1,3 +1,4 @@
 import Loader from './Loader/Loader';
 import { Histogram } from './Histogram/Histogram';
-export { Loader, Histogram };
+import ColorPanel from './ColorPanel/ColorPanel';
+export { Loader, Histogram, ColorPanel };
