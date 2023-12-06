@@ -1,4 +1,8 @@
+import { ColorRule, Data } from '../../lib/type';
 import { Bar } from 'react-chartjs-2';
+import { labels } from '../../lib/constants';
+import { DEFAULT_COLOR_RULES } from '../../lib/constants';
+import { colorRules } from '../../lib/helper';
 import {
 	Chart as ChartJS,
 	CategoryScale,
@@ -18,27 +22,37 @@ ChartJS.register(
 	Legend
 );
 
-const labels = [1, 2, 3, 4, 5];
+export const Histogram = ({ label, values }: Data) => {
+	const rules = DEFAULT_COLOR_RULES;
 
-interface IHistogram {
-	label: string;
-	values: number[];
-}
-export const Histogram = ({ label, values }: IHistogram) => {
+	const getBarColor = (value: number[], index: number) => {
+		value.map((el) => {
+			console.log(el);
+		});
+
+		return 'gray';
+	};
+
 	const data = {
 		labels,
 		datasets: [
 			{
 				label: label,
-				data: values,
-				backgroundColor: 'rgba(255, 99, 132, 0.5)',
+				data: [...values],
+				backgroundColor: [
+					getBarColor(values, 1),
+					getBarColor(values, 2),
+					getBarColor(values, 3),
+					getBarColor(values, 4),
+					getBarColor(values, 5),
+				],
 			},
 		],
 	};
 
 	return (
 		<div className='histogram'>
-			<Bar data={data} />;
+			<Bar data={data} />
 		</div>
 	);
 };

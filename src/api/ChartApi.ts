@@ -1,9 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
-interface Data {
-	label: string;
-	values: number[];
-}
+import { Data } from '../lib/type';
 
 export const ChartApi = createApi({
 	reducerPath: 'api',

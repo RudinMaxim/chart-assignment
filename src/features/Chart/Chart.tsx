@@ -1,5 +1,7 @@
-import { ColorPanel, Histogram, Loader } from '../../components/index';
+import { useState } from 'react';
 import { useGetChartDataQuery } from '../../api/ChartApi';
+import { DEFAULT_COLOR_RULES } from '../../lib/constants';
+import { Histogram, Loader } from '../../components/index';
 
 export default function Chart(): React.JSX.Element {
 	const { data, isLoading, isSuccess, error } = useGetChartDataQuery();
@@ -7,6 +9,7 @@ export default function Chart(): React.JSX.Element {
 	if (isLoading) {
 		return <Loader />;
 	}
+	console.log(data);
 
 	if (error) {
 		console.log(error);
@@ -14,10 +17,11 @@ export default function Chart(): React.JSX.Element {
 
 	return (
 		<section>
-			<ColorPanel />
 			{isSuccess &&
 				data.map((item) => (
-					<Histogram key={item.label} label={item.label} values={item.values} />
+					<div key={item.label}>
+						<Histogram label={item.label} values={item.values} />
+					</div>
 				))}
 		</section>
 	);
